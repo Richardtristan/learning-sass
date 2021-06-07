@@ -1,0 +1,99 @@
+$small-desktop: 960px;
+$large-desktop: 1200px;
+$handheld: 768px;
+$handhelds-landscape: 1024px;
+$mobile: 640px;
+$mobile-landscape: 480px;
+
+@mixin respond-to($media) {
+  @if $media == largeDesktop {
+    @media only screen and (min-width: $large-desktop) { @content; }
+  }
+
+  @if $media == smallDesktop {
+    @media only screen and (max-width: $small-desktop) { @content; }
+  }
+  @if $media == handhelds {
+    @media only screen and (max-width: $handheld) { @content; }
+  }
+  @if $media == handhelds-landscape {
+    @media only screen  and (min-device-width : $handheld)
+                        and (max-device-width : $handhelds-landscape)
+                        and (orientation : landscape){ @content; }
+  }
+  @if $media == mobile {
+    @media only screen and (max-width: $mobile) { @content; }
+  }
+  @if $media == mobile-portrait {
+    @media only screen  and (max-width: $mobile)
+                        and (orientation : portrait) { @content; }
+  }
+  @if $media == mobile-landscape {
+    @media only screen  and (min-width: 320px)
+                        and (max-width: $mobile-landscape)
+                        and (orientation : landscape) { @content; }
+  }
+
+  @if $media == retina {
+    @media (-webkit-min-device-pixel-ratio: 2) { @content; }
+  }
+
+  @if $media == iphone5 {
+    @media only screen and (device-aspect-ratio: 40/71) { @content }
+  }
+}
+
+body {
+  h1{
+    width: 8%;
+    text-align: center;
+  }
+  .textedubas{
+    overflow: hidden;
+    max-height: 7%;
+    white-space: nowrap;
+  }
+    .textedubas:hover{
+      overflow: hidden;
+      max-height: 25%;
+    }
+  
+  background-color: gray;
+    .red1{
+      width: 3%;
+      /* padding: 4% 0 0 0 !important; */
+      color: white;
+      background-color: red;
+      border-radius: 3em;
+      padding: 5px 5px 5px 5px;
+      text-align: center;
+      position: absolute;
+      top: -5px;
+      left: 210px;
+  }
+
+    .red{
+      @include respond-to(handhelds);
+      background-color: red;
+      color: white;
+      position: absolute;
+      top: 170px;
+      left: 8px;
+      }
+
+        .ima+texte{
+          display: flex;
+        } 
+
+        // .title:hover + .texte{
+        //   display: block;
+        //   color: black;
+        //     width: 15.5em;
+        //   }
+        
+          // .texte{
+          // display: none;
+          // }
+  }
+
+
